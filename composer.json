@@ -1,0 +1,57 @@
+{
+  "name": "tlapnet/datus",
+  "description": "Build forms from schema",
+  "keywords": [
+    "forms",
+    "schema",
+    "nette"
+  ],
+  "type": "library",
+  "license": "MPL-2.0",
+  "homepage": "https://github.com/tlapnet/datus",
+  "authors": [
+    {
+      "name": "Milan Felix Šulc",
+      "homepage": "https://f3l1x.io"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "contributte/utils": "^0.4.0"
+  },
+  "require-dev": {
+    "contributte/di": "^0.4.0",
+    "latte/latte": "~2.5.0",
+    "nette/application": "~3.0.0",
+    "nette/forms": "~3.0.0",
+    "ninjify/qa": "^0.9.0",
+    "phpstan/extension-installer": "^1.0.0",
+    "phpstan/phpstan-deprecation-rules": "^0.11.0",
+    "phpstan/phpstan-nette": "^0.11.0",
+    "phpstan/phpstan-shim": "^0.11.0",
+    "phpstan/phpstan-strict-rules": "^0.11.0",
+    "phpunit/phpunit": "^8.0.0",
+    "symfony/translation": "^4.3.0",
+    "symfony/validator": "^4.3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Tlapnet\\Datus\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Tlapnet\\Datus\\": "tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.x-dev"
+    }
+  }
+}

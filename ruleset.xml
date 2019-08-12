@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ruleset>
+	<rule ref="./vendor/ninjify/coding-standard/contributte.xml">
+		<exclude name="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing.IncorrectLinesCountBeforeControlStructure"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing.IncorrectLinesCountAfterControlStructure"/>
+		<exclude name="Squiz.Commenting.FunctionComment.InvalidTypeHint"/>
+	</rule>
+
+	<!-- Package specific rules -->
+	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+		<properties>
+			<property name="rootNamespaces" type="array" value="
+                src=>Tlapnet\Datus,
+                tests=>Tests\Tlapnet\Datus,
+            "/>
+		</properties>
+	</rule>
+
+	<rule ref="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator.TernaryOperatorNotUsed">
+		<exclude-pattern>src/Bridges/Symfony/Validation/ValidatorFactory.php</exclude-pattern>
+		<exclude-pattern>src/Form/FormMarshaller.php</exclude-pattern>
+		<exclude-pattern>src/Schema/Layout/PositionLayout.php</exclude-pattern>
+	</rule>
+</ruleset>

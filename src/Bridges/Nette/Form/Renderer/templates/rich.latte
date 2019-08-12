@@ -1,0 +1,92 @@
+{var $layout => $_blueprint->getLayout()}
+
+{form $form, class => 'row'}
+    {foreach $layout->getGroups() as $group}
+        {include #group, group => $group}
+    {/foreach}
+{/form}
+
+{define #group}
+    {var $classes = []}
+    {php $classes[] = 'col-md-' . $group->getRender('width', 12)}
+
+    <fieldset n:class="(expand) $classes">
+        <legend>{$group->getCaption()}</legend>
+
+        {foreach $group->getSections() as $section}
+            <div class="row">
+                {include #section, section => $section}
+            </div>
+        {/foreach}
+    </fieldset>
+{/define}
+
+{define #section}
+    {foreach $section->getInputs() as $iid => $layoutInput}
+        {var $__input = $_blueprint->getInput($iid)}
+
+        {* Skip disabled inputs *}
+        {continueIf $__input->getOption('enabled', TRUE) === FALSE}
+
+        {if $form[$iid]->getOption('type') === 'button'}
+            {include #button, input => $__input, layoutInput => $layoutInput}
+        {elseif $form[$iid]->getOption('type') === 'checkbox'}
+            {include #input-checkbox, input => $__input, layoutInput => $layoutInput}
+        {elseif $form[$iid]->getOption('type') === 'radio'}
+            {include #input-radio, input => $__input, layoutInput => $layoutInput}
+        {elseif $form[$iid]->getOption('type') === 'select'}
+            {include #input-select, input => $__input, layoutInput => $layoutInput}
+        {else}
+            {include #input, input => $__input, layoutInput => $layoutInput}
+        {/if}
+    {/foreach}
+{/define}
+
+{define #input}
+    {var $classes = ['form-group']}
+
+    {php $classes[] = 'col-md-' . $layoutInput->getRender('width', 12)}
+    <div n:class="(expand) $classes">
+        <label n:name="$input->getId()"/>
+        <input class="form-control" n:name="$input->getId()">
+    </div>
+{/define}
+
+{define #input-checkbox}
+    {var $classes = ['form-check']}
+
+    {php $classes[] = 'col-md-' . $layoutInput->getRender('width', 12)}
+    <div n:class="(expand) $classes">
+        <input class="form-check-input" n:name="$input->getId()">
+        <label class="form-check-label" n:name="$input->getId()"/>
+    </div>
+{/define}
+
+{define #input-radio}
+    {var $classes = ['form-check']}
+
+    {php $classes[] = 'col-md-' . $layoutInput->getRender('width', 12)}
+    <div n:class="(expand) $classes">
+        <input class="form-check-input" n:name="$input->getId()">
+        <label class="form-check-label" n:name="$input->getId()"/>
+    </div>
+{/define}
+
+{define #input-select}
+    {var $classes = ['form-group']}
+
+    {php $classes[] = 'col-md-' . $layoutInput->getRender('width', 12)}
+    <div n:class="(expand) $classes">
+        <label n:name="$input->getId()"/>
+        <select class="form-control" n:name="$input->getId()"></select>
+    </div>
+{/define}
+
+{define #button}
+    {var $classes = ['form-group']}
+
+    {php $classes[] = 'col-md-' . $layoutInput->getRender('width', 12)}
+    <div n:class="(expand) $classes">
+        <input class="btn btn-primary" n:name="$input->getId()">
+    </div>
+{/define}
