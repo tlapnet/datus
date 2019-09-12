@@ -24,7 +24,7 @@
     "latte/latte": "~2.5.0",
     "nette/application": "~3.0.0",
     "nette/forms": "~3.0.0",
-    "ninjify/qa": "^0.9.0",
+    "ninjify/qa": "^0.10.0",
     "phpstan/extension-installer": "^1.0.0",
     "phpstan/phpstan-deprecation-rules": "^0.11.0",
     "phpstan/phpstan-nette": "^0.11.0",
