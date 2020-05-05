@@ -2,7 +2,6 @@
 
 namespace Tlapnet\Datus\Bridges\Nette\Form\Decorator;
 
-use Tlapnet\Datus\Bridges\Nette\Form\Decorator\Form\IFormDecorator;
 use Tlapnet\Datus\Exception\Logical\InvalidStateException;
 
 class FormDecoratorContainer

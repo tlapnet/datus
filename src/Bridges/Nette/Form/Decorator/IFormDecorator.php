@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace Tlapnet\Datus\Bridges\Nette\Form\Decorator\Form;
+namespace Tlapnet\Datus\Bridges\Nette\Form\Decorator;
 
 use Nette\Application\UI\Form;
 

@@ -5,6 +5,9 @@ namespace Tlapnet\Datus\Schema;
 use ArrayAccess;
 use Tlapnet\Datus\Exception\Logical\InvalidArgumentException;
 
+/**
+ * @implements ArrayAccess<string,mixed>
+ */
 class Rawprint implements ArrayAccess
 {
 

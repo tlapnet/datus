@@ -48,10 +48,10 @@ class PositionLayout extends Layout
 		$positions = [];
 
 		foreach ($inputs as $name => $input) {
-			$position = $input->getControl()->getOption('position', null);
+			$position = $input->getControl()->getOption('position', NULL);
 
 			// Use predefined position or calculate default position
-			if ($position !== null) {
+			if ($position !== NULL) {
 				$positions[$name] = $position;
 			} else {
 				$positions[$name] = count($positions) * $this->delimiter;
@@ -59,8 +59,8 @@ class PositionLayout extends Layout
 		}
 
 		// Sort by positions
-		usort($inputs, function (Input $i1, Input $i2) use ($positions) {
-			return $positions[$i1->getId()] > $positions[$i2->getId()];
+		usort($inputs, function (Input $i1, Input $i2) use ($positions): int {
+			return $positions[$i1->getId()] > $positions[$i2->getId()] ? -1 : 1;
 		});
 
 		return $inputs;

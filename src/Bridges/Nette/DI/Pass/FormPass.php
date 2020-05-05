@@ -9,6 +9,8 @@ use Nette\Schema\Expect;
 use Nette\Schema\Schema;
 use Tlapnet\Datus\Bridges\Nette\Form\Decorator\FormDecoratorContainer;
 use Tlapnet\Datus\Bridges\Nette\Form\Decorator\FormDecoratorManager;
+use Tlapnet\Datus\Bridges\Nette\Form\Decorator\InputDecoratorContainer;
+use Tlapnet\Datus\Bridges\Nette\Form\Decorator\InputDecoratorManager;
 use Tlapnet\Datus\Bridges\Nette\Form\Filter\FilterBuilderContainer;
 use Tlapnet\Datus\Bridges\Nette\Form\Filter\Impl\LowercaseFilterBuilder;
 use Tlapnet\Datus\Bridges\Nette\Form\FormCreator;
@@ -35,8 +37,6 @@ use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\TimeControlBuilder;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\UploadControlBuilder;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\InputBuilderContainer;
 use Tlapnet\Datus\Bridges\Nette\Form\SimpleFormBuilder;
-use Tlapnet\Datus\Form\Decorator\InputDecoratorContainer;
-use Tlapnet\Datus\Form\Decorator\InputDecoratorManager;
 
 class FormPass extends AbstractPass
 {

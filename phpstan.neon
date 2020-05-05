@@ -4,12 +4,8 @@ parameters:
 		- path: %currentWorkingDirectory%/src/Bridges/Nette/Form/AbstractFormBuilder.php
 		  message: '#^Instanceof between Tlapnet\\Datus\\Schema\\FormInput and Tlapnet\\Datus\\Schema\\FormInput will always evaluate to true\.$#'
 
-		# Ignore globally native php functions which could return false when used incorrectly
-		- '#^Strict comparison using .+ between .+ and false will always evaluate to true\.$#'
-
 		# Intentional incompatibility
 		- '#^Parameter .+ of method .+Validator\:\:validate\(\) should be contravariant with parameter .+ of method Symfony\\Component\\Validator\\ConstraintValidatorInterface\:\:validate\(\)$#'
-		- '#^Array \(array\<callable\(Nette\\Forms\\Container\)\: void\>\) does not accept Closure\(Nette\\Application\\UI\\Form\)\: void\.$#'
 
 		# Seems safe by usage. Method should probably accept only string.
 		- path: %currentWorkingDirectory%/src/Utils/DateTimeTools.php

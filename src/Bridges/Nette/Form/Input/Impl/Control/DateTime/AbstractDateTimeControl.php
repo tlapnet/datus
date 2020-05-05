@@ -56,6 +56,7 @@ abstract class AbstractDateTimeControl extends TextBase
 
 		// From timestamp
 		if (ctype_digit((string) $this->value)) {
+			/** @var DateTimeImmutable|false $value */
 			$value = (new DateTimeImmutable())->setTimestamp((int) $this->value);
 
 			if ($value !== false) {

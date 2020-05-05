@@ -2,7 +2,8 @@
 
 namespace Tlapnet\Datus\Bridges\Nette\Form\Trigger;
 
-use Tlapnet\Datus\Form\Decorator\InputDecoratorManager;
+use Nette\Forms\Controls\BaseControl;
+use Tlapnet\Datus\Bridges\Nette\Form\Decorator\InputDecoratorManager;
 use Tlapnet\Datus\Schema\FormInput;
 
 class InputDecoratorTrigger
@@ -16,7 +17,7 @@ class InputDecoratorTrigger
 		$this->inputDecoratorManager = $inputDecoratorManager;
 	}
 
-	public function __invoke(FormInput $input): FormInput
+	public function __invoke(FormInput $input, BaseControl $control): FormInput
 	{
 		// Apply decorators on Blueprint's inputs
 		// It's before Nette form controls are created
@@ -27,7 +28,7 @@ class InputDecoratorTrigger
 		// which are set in InputBasicTrigger etc.
 
 		foreach ($input->getDecorators() as $name => $args) {
-			$this->inputDecoratorManager->get($name)->apply($input);
+			$this->inputDecoratorManager->get($name)->apply($input, $control);
 		}
 
 		return $input;

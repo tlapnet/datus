@@ -64,7 +64,7 @@ class ValidationResult
 
 	public static function of(): self
 	{
-		return new static();
+		return new self();
 	}
 
 }

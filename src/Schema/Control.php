@@ -11,15 +11,8 @@ class Control
 	use TOptions;
 	use TAttributtes;
 
-	public const CALLBACK_ON_CREATE = 'onCreate';
-
 	/** @var ?string */
 	protected $label;
-
-	/** @var callable[][] */
-	protected $callbacks = [
-		'onCreate' => [],
-	];
 
 	/** @var string */
 	private $type;
@@ -42,25 +35,6 @@ class Control
 	public function setLabel(string $label): void
 	{
 		$this->label = $label;
-	}
-
-	public function addCallback(string $event, callable $callback): void
-	{
-		if (!isset($this->callbacks[$event])) {
-			$this->callbacks[$event] = [];
-		}
-
-		$this->callbacks[$event][] = $callback;
-	}
-
-	/**
-	 * @param mixed ...$args
-	 */
-	public function emit(string $event, ...$args): void
-	{
-		foreach ($this->callbacks[$event] as $callback) {
-			call_user_func_array($callback, $args);
-		}
 	}
 
 }

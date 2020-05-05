@@ -35,7 +35,7 @@ class Validator implements IValidator
 		foreach ($violations as $violation) {
 			// Strip [] from start & end
 			$path = str_replace(['[', ']'], '', $violation->getPropertyPath());
-			$errors[$path] = $violation->getMessage();
+			$errors[$path] = (string) $violation->getMessage();
 		}
 
 		return ValidationResultBuilder::of()

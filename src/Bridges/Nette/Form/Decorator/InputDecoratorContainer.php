@@ -1,9 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace Tlapnet\Datus\Form\Decorator;
+namespace Tlapnet\Datus\Bridges\Nette\Form\Decorator;
 
 use Tlapnet\Datus\Exception\Logical\InvalidStateException;
-use Tlapnet\Datus\Form\Decorator\Input\IInputDecorator;
 
 class InputDecoratorContainer
 {

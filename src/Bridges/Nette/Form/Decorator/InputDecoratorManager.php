@@ -1,8 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace Tlapnet\Datus\Form\Decorator;
-
-use Tlapnet\Datus\Form\Decorator\Input\IInputDecorator;
+namespace Tlapnet\Datus\Bridges\Nette\Form\Decorator;
 
 class InputDecoratorManager
 {

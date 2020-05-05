@@ -119,15 +119,13 @@ abstract class AbstractFormBuilder implements IFormBuilder
 				throw new InvalidStateException(sprintf('Cannot create control for type "%s"', $type));
 			}
 
+			// @todo multiple
+
 			// Create control of given type
 			$control = $this->controlBuilders->get($type)->build($form, $input);
 
 			// Trigger @INPUT_AFTER_BUILD
 			$this->trigger(self::EVENT_INPUT_AFTER_BUILD, $input, $control);
-
-			// [@internal] Fire control's create callbacks
-			// Useful on some internal callbacks
-			$input->getControl()->emit(Control::CALLBACK_ON_CREATE, $control);
 		}
 	}
 

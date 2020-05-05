@@ -2,8 +2,6 @@
 
 namespace Tlapnet\Datus\Bridges\Nette\Form\Decorator;
 
-use Tlapnet\Datus\Bridges\Nette\Form\Decorator\Form\IFormDecorator;
-
 class FormDecoratorManager
 {
 
