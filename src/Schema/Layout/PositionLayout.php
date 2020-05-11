@@ -60,7 +60,7 @@ class PositionLayout extends Layout
 
 		// Sort by positions
 		usort($inputs, function (Input $i1, Input $i2) use ($positions): int {
-			return $positions[$i1->getId()] > $positions[$i2->getId()] ? -1 : 1;
+			return $positions[$i1->getId()] < $positions[$i2->getId()] ? -1 : 1;
 		});
 
 		return $inputs;
