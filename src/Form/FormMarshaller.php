@@ -97,7 +97,12 @@ class FormMarshaller
 			}
 
 			if (isset($input['control'])) {
-				$output[$inputName] = $this->createFormInput($inputName, $input);
+				// Handle potential nested form input
+				if ($input['control']['type'] === FormInput::CONTAINER) {
+					$output[$inputName] = $this->createFormContainerInput($inputName, $input);
+				} else {
+					$output[$inputName] = $this->createFormInput($inputName, $input);
+				}
 			} else {
 				$output[$inputName] = $this->createInput($inputName, $input);
 			}
@@ -160,6 +165,17 @@ class FormMarshaller
 		}
 
 		$i->setControl($control);
+
+		return $i;
+	}
+
+	/**
+	 * @param mixed[] $input
+	 */
+	protected function createFormContainerInput(string $inputName, array $input): FormInput
+	{
+		$i = $this->createFormInput($inputName, $input);
+		$i->getControl()->setOption('inputs', $this->createInputs($i->getOption('inputs')));
 
 		return $i;
 	}

@@ -2,14 +2,20 @@
 
 namespace Tlapnet\Datus\Bridges\Nette\Form\Trigger;
 
+use Nette\ComponentModel\Component;
 use Nette\Forms\Controls\BaseControl;
 use Tlapnet\Datus\Schema\FormInput;
 
 class InputBasicTrigger
 {
 
-	public function __invoke(FormInput $input, BaseControl $control): BaseControl
+	public function __invoke(FormInput $input, Component $component): Component
 	{
+		if (!($component instanceof BaseControl)) return $component;
+
+		/** @var BaseControl $control */
+		$control = $component;
+
 		// Mark all controls as not-required (it's needed for filters later)
 		$control->setRequired(false);
 

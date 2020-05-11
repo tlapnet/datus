@@ -2,6 +2,7 @@
 
 namespace Tlapnet\Datus\Bridges\Nette\Form\Trigger;
 
+use Nette\ComponentModel\Component;
 use Nette\Forms\Controls\BaseControl;
 use Tlapnet\Datus\Bridges\Nette\Form\Filter\FilterBuilderContainer;
 use Tlapnet\Datus\Exception\Logical\InvalidStateException;
@@ -18,8 +19,13 @@ class InputFiltersTrigger
 		$this->filterBuilders = $filters;
 	}
 
-	public function __invoke(FormInput $input, BaseControl $control): BaseControl
+	public function __invoke(FormInput $input, Component $component): Component
 	{
+		if (!($component instanceof BaseControl)) return $component;
+
+		/** @var BaseControl $control */
+		$control = $component;
+
 		$filters = $input->getFilters();
 
 		// Apply filters on Nette form controls

@@ -7,6 +7,8 @@ use Tlapnet\Datus\Exception\Logical\InvalidStateException;
 class FormInput extends Input
 {
 
+	public const CONTAINER = 'container';
+
 	/** @var Control|null */
 	protected $control;
 

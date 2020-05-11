@@ -3,13 +3,13 @@
 namespace Tlapnet\Datus\Bridges\Nette\Form;
 
 use Nette\Application\UI\Form;
+use Nette\Forms\Container;
 use Nette\Forms\Controls\BaseControl;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\InputBuilderContainer;
 use Tlapnet\Datus\Exception\Logical\InvalidArgumentException;
 use Tlapnet\Datus\Exception\Logical\InvalidStateException;
 use Tlapnet\Datus\Form\FormData;
 use Tlapnet\Datus\Form\IFormBuilder;
-use Tlapnet\Datus\Schema\Control;
 use Tlapnet\Datus\Schema\FormBlueprint;
 use Tlapnet\Datus\Schema\FormInput;
 use Tlapnet\Datus\Validation\IValidatorFactory;
@@ -97,6 +97,14 @@ abstract class AbstractFormBuilder implements IFormBuilder
 			? $layout->getInputs($blueprint)
 			: $blueprint->getInputs();
 
+		$this->buildInputControls($inputs, $form);
+	}
+
+	/**
+	 * @param FormInput[] $inputs
+	 */
+	protected function buildInputControls(array $inputs, Container $container): void
+	{
 		foreach ($inputs as $inputName => $input) {
 			// Trigger @INPUT_BEFORE_BUILD
 			$this->trigger(self::EVENT_INPUT_BEFORE_BUILD, $input);
@@ -119,10 +127,14 @@ abstract class AbstractFormBuilder implements IFormBuilder
 				throw new InvalidStateException(sprintf('Cannot create control for type "%s"', $type));
 			}
 
-			// @todo multiple
-
 			// Create control of given type
-			$control = $this->controlBuilders->get($type)->build($form, $input);
+			$control = $this->controlBuilders->get($type)->build($container, $input);
+
+			// @nested create nested form container
+			if ($type === FormInput::CONTAINER) {
+				assert($control instanceof Container);
+				$this->buildInputControls($input->getControl()->getOption('inputs'), $control);
+			}
 
 			// Trigger @INPUT_AFTER_BUILD
 			$this->trigger(self::EVENT_INPUT_AFTER_BUILD, $input, $control);

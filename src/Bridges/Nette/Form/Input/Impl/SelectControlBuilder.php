@@ -2,14 +2,14 @@
 
 namespace Tlapnet\Datus\Bridges\Nette\Form\Input\Impl;
 
+use App\UI\Form\Control\SelectBox;
 use Nette\Forms\Container;
-use Nette\Forms\Controls\BaseControl;
 use Tlapnet\Datus\Schema\FormInput;
 
 class SelectControlBuilder extends AbstractControlBuilder
 {
 
-	public function build(Container $form, FormInput $input): BaseControl
+	public function build(Container $form, FormInput $input): SelectBox
 	{
 		$el = $form->addSelect($input->getId(), $input->getControl()->getLabel());
 

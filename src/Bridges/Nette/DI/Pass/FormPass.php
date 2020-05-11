@@ -18,6 +18,7 @@ use Tlapnet\Datus\Bridges\Nette\Form\FormRegistry;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\ButtonControlBuilder;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\CheckboxControlBuilder;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\CheckboxListControlBuilder;
+use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\ContainerControlBuilder;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\DateControlBuilder;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\DateTimeLocalControlBuilder;
 use Tlapnet\Datus\Bridges\Nette\Form\Input\Impl\EmailControlBuilder;
@@ -61,6 +62,7 @@ class FormPass extends AbstractPass
 	/** @var string[]|IControlBuilder[] */
 	protected $controlBuilders = [
 		'button' => ButtonControlBuilder::class,
+		'container' => ContainerControlBuilder::class,
 		'checkbox' => CheckboxControlBuilder::class,
 		'checkboxlist' => CheckboxListControlBuilder::class,
 		'date' => DateControlBuilder::class,
